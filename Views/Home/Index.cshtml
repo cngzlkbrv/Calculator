@@ -1,0 +1,40 @@
+﻿@using Calculator.ViewModels;
+@model CalculatorViewModel
+
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<h1>Calculator</h1>
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form action="@Url.Action("Index")" method="post">
+    <div class="form-group">
+        <label for="number1">Number 1</label>
+        <input type="text" class="form-control" id="number1" name="number1" value="@Model.Number1" />
+    </div>
+    <div class="form-group">
+        <label for="number2">Number 2</label>
+        <input type="text" class="form-control" id="number2" name="number2" value="@Model.Number2" />
+    </div>
+    <div class="form-group">
+        <label for="operation">Operation</label>
+        <select class="form-control" id="operation" name="operation">
+            <option value="+">Add</option>
+            <option value="-">Subtract</option>
+            <option value="*">Multiply</option>
+            <option value="/">Divide</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+<div>
+    Result: @Model.Result
+</div>
